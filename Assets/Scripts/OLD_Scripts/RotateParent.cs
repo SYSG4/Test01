@@ -1,12 +1,18 @@
+// MoveParentに統合
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rotate : MonoBehaviour
+public class RotateParent : MonoBehaviour
 {
     float nx,nz;
     int reverse = 1;
-    void OnMouseDrag(){
+
+    private void OnMouseDown() {
+        nx = transform.rotation.x;
+        nz = transform.rotation.z;
+    }
+    private void OnMouseDrag(){
         if(Input.GetKeyDown(KeyCode.W)){
             Debug.Log("W");
             Mathf.Repeat(nx += 180, 360);
@@ -24,7 +30,7 @@ public class Rotate : MonoBehaviour
             Debug.Log("D");
             Mathf.Repeat(nz -= (90 * reverse), 360);
         }
-        transform.rotation = (Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(nx,0,nz),0.5f));
+        transform.rotation = (Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(nx,0,nz),1f));
     }
     
 }

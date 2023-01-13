@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragOBJ : MonoBehaviour
+public class DragParent_old : MonoBehaviour
 {
     float posx, posy, difx, dify;
     bool fit = false;
