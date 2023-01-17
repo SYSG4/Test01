@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MoveParent : MonoBehaviour
 {
-    public float nx, ny, nz;
+    float nx, ny, nz;
     int reverse = 1;
+    public Color32 Default, Active; 
+    //インスペクターから通常時とドラッグ中の色、透明の設定用
     public static MoveParent instance;
     SpriteRenderer sr;
     private void Start() {
@@ -22,7 +24,7 @@ public class MoveParent : MonoBehaviour
         nz = transform.eulerAngles.z;
 
         // クリックしたオブジェクトを半透明化する
-        sr.sharedMaterial.color = new Color32(255, 255, 255, 150);
+        sr.sharedMaterial.color = Default;
     }
 
     public void OnMouseDrag()
@@ -33,6 +35,8 @@ public class MoveParent : MonoBehaviour
         Vector2 objectScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
         Vector2 objectWorldPoint = Camera.main.ScreenToWorldPoint(objectScreenPoint);
         transform.position = objectWorldPoint;
+
+        sr.sharedMaterial.color = Active;
 
 
         // Q,W,E,A,S,Dキー入力を受けて各回転軸の座標を書き換える
@@ -76,14 +80,14 @@ public class MoveParent : MonoBehaviour
         // オブジェクトをクリック(離した)時
 
         // 透明度を戻す
-        sr.sharedMaterial.color = new Color(255, 255, 255,255);
+        sr.sharedMaterial.color = Default;
     }
 
     public void Update(){
         // 書き換えられた座標をに応じて実際にオブジェクトを回転させる、上はアニメーションあり、下はアニメーション無し。
         // 描画バグ対策のためアニメーション無し推奨
 
-        // transform.rotation = (Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(nx, ny, nz), 1f));
-        transform.eulerAngles = new Vector3(nx,ny,nz);
+        transform.rotation = (Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(nx, ny, nz), 1f));
+        // transform.eulerAngles = new Vector3(nx,ny,nz);
     }
 }

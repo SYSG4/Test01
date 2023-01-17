@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MoveChild : MonoBehaviour
 {
-    public float nx,nz;
     private GameObject parent;
     private MoveParent MoveParent;
     private void Start() {
