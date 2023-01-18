@@ -5,7 +5,7 @@ using UnityEngine;
 public class DropChild : MonoBehaviour
 {
     DropParent DropParent;
-    Vector3[,] tilepos;
+    Vector2[,] tilepos;
     string[] target = new string[2];
 
     // Update is called once per frame
@@ -15,13 +15,17 @@ public class DropChild : MonoBehaviour
         tilepos = DropParent.tilepos;
     }
 
+
+    private void OnMouseDown() {
+        DropParent.OnMouseDown();
+    }
     private void OnMouseDrag() {
         DropParent.OnMouseDrag();
     }
     public void ParentDrag(out int ti, out int tj)
     {
-        ti=404;
-        tj=404;
+        ti= 40;
+        tj= 4;
         float nx,ny;
         int flagx,flagy;
         nx = transform.position.x;
@@ -36,11 +40,12 @@ public class DropChild : MonoBehaviour
                     ti = i;
                     tj = j;
                     return;
-                }else{
-                    ti = 404;
-                    tj = 404;
                 }
             }
         }
+    }
+
+    private void OnMouseUp() {
+        DropParent.OnMouseUp();
     }
 }
