@@ -24,4 +24,4 @@ public class MoveChild : MonoBehaviour
         MoveParent.Update();
     }
 }
-// 子オブジェクトのアタッチ用、操作に応じて親オブジェクトのスクリプト(MoveParent.cs)の関数を実行。
+// 子オブジェクトのアタッチ用、操作に応じて親オブジェクトのスクリプト(MoveParent.cs)の関数を実行。親オブジェクトを動かせば子オブジェクトは勝手についていく。

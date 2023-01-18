@@ -6,12 +6,15 @@ using System.Linq;
 public class DropParent : MonoBehaviour
 {
     public GameObject[] child;
-    public Vector3[,] tilepos = new Vector3[3, 3];
-    // 配列で格納 Childs[変数] で呼び出す
+    // 子オブジェクトを配列で格納、ピースの大きさ次第で数が変わる。アタッチ後インスペクターから子オブジェクトの指定必須。
+    public Vector3[,] tilepos = new Vector3[4, 4];
+    // 盤面の１つ１つのタイルの位置を格納するための変数。
     string[] target;
+    // ドラッグ中近にあるタイルを格納する変数。(赤色に変える処理に使う)
     void Start()
     {
         target = Enumerable.Repeat("Null",child.GetLength(0) + 1).ToArray();
+        // 変数の初期化、子オブジェクトの数に合わせて要素数を変える。
 
         for (int i = 0; i < tilepos.GetLength(0); i++)
         {
@@ -43,8 +46,8 @@ public class DropParent : MonoBehaviour
         {
             for (int j = 0; j < tilepos.GetLength(1); j++)
             {
-                flagx = (int)((tilepos[i, j].x - nx) / 1.5);
-                flagy = (int)((tilepos[i, j].y - ny) / 1.5);
+                flagx = (int)((tilepos[i, j].x - nx) / 1.4);
+                flagy = (int)((tilepos[i, j].y - ny) / 1.4);
 
                 if (flagx == 0 && flagy == 0)
                 {

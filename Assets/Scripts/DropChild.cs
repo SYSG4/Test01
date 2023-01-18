@@ -20,7 +20,6 @@ public class DropChild : MonoBehaviour
     }
     public void ParentDrag(out int ti, out int tj)
     {
-        Debug.Log($"Call Child! {name}");
         ti=404;
         tj=404;
         float nx,ny;
@@ -30,8 +29,8 @@ public class DropChild : MonoBehaviour
 
         for(int i=0; i < tilepos.GetLength(0);i++){
             for(int j=0; j < tilepos.GetLength(1);j++){
-                flagx = (int)((tilepos[i,j].x - nx) / 1.5);
-                flagy = (int)((tilepos[i,j].y - ny) / 1.5);
+                flagx = (int)((tilepos[i,j].x - nx) / 1.4);
+                flagy = (int)((tilepos[i,j].y - ny) / 1.4);
 
                 if(flagx == 0 && flagy == 0){
                     ti = i;
