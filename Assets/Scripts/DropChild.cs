@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class DropChild : MonoBehaviour
 {
-    Vector3[,] tilepos = DropParent.tilepos;
-    int[] target = new int[2];
-    void Start()
-    {
-        for(int i=0; i < tilepos.GetLength(0);i++){
-            for(int j=0; j < tilepos.GetLength(1);j++ ){
-                tilepos[i,j] = GameObject.Find($"Tile{i}{j}").transform.position;
-            }
-        }
-    }
+    DropParent DropParent;
+    Vector3[,] tilepos;
+    string[] target = new string[2];
 
     // Update is called once per frame
-    public int[] ParentDrag()
+    void Start(){
+        GameObject parent = transform.parent.gameObject;
+        DropParent = parent.GetComponent<DropParent>();
+        tilepos = DropParent.tilepos;
+    }
+
+    private void OnMouseDrag() {
+        DropParent.OnMouseDrag();
+    }
+    public void ParentDrag(out int ti, out int tj)
     {
+        Debug.Log($"Call Child! {name}");
+        ti=404;
+        tj=404;
         float nx,ny;
         int flagx,flagy;
         nx = transform.position.x;
@@ -29,12 +34,14 @@ public class DropChild : MonoBehaviour
                 flagy = (int)((tilepos[i,j].y - ny) / 1.5);
 
                 if(flagx == 0 && flagy == 0){
-                    target = new int[]{i,j};
+                    ti = i;
+                    tj = j;
+                    return;
                 }else{
-                    target = null;
+                    ti = 404;
+                    tj = 404;
                 }
             }
         }
-        return target;
     }
 }

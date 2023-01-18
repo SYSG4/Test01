@@ -1,21 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class DropParent : MonoBehaviour
 {
     public GameObject[] child;
-    public static Vector3[,] tilepos = new Vector3[3, 3];
+    public Vector3[,] tilepos = new Vector3[3, 3];
     // 配列で格納 Childs[変数] で呼び出す
-    int[][] target = new int[4][]{
-        null,
-        new int[2],
-        new int[2],
-        new int[2],
-    };
-
+    string[] target;
     void Start()
     {
+        target = Enumerable.Repeat("Null",child.GetLength(0) + 1).ToArray();
+
         for (int i = 0; i < tilepos.GetLength(0); i++)
         {
             for (int j = 0; j < tilepos.GetLength(1); j++)
@@ -25,17 +22,23 @@ public class DropParent : MonoBehaviour
         }
     }
 
-    void OnMouseDrag()
+    void Settarget(){
+        target = Enumerable.Repeat("Null",child.GetLength(0) + 1).ToArray();
+        for(int i = 0; i < child.GetLength(0); i ++){
+            child[i].GetComponent<DropChild>().ParentDrag(out int ti, out int tj);
+            target[i+1] = $"Tile{ti}{tj}";
+        }
+    }
+
+    public void OnMouseDrag()
     {
         float nx, ny;
         int flagx, flagy;
         nx = transform.position.x;
         ny = transform.position.y;
 
-        target[1] = child[0].GetComponent<DropChild>().ParentDrag();
-        target[2] = child[1].GetComponent<DropChild>().ParentDrag();
-        target[3] = child[2].GetComponent<DropChild>().ParentDrag();
 
+        Settarget();
         for (int i = 0; i < tilepos.GetLength(0); i++)
         {
             for (int j = 0; j < tilepos.GetLength(1); j++)
@@ -45,27 +48,16 @@ public class DropParent : MonoBehaviour
 
                 if (flagx == 0 && flagy == 0)
                 {
-                    target[0] = new int[2] { i, j };
-                }
-                else
-                {
-                    target[0] = null;
+                    target[0] = $"Tile{i}{j}";
                 }
 
-                for (int k = 0; k < 4; i++)
-                {
-                    Debug.Log($"Target{i}:{target[i]}");
-                    if (target[k] != null)
-                    {
-                        GameObject.Find($"Tile{target[i][0]}{target[i][1]}").GetComponent<Renderer>().material.color = Color.red;
-                    }
-                    else
-                    {
-                        // GameObject.Find($"").GetComponent<Renderer>().material.color = Color.white;
-                    }
+                if(target.Contains($"Tile{i}{j}")){
+                    GameObject.Find($"Tile{i}{j}").GetComponent<Renderer>().material.color = Color.red;
+                }else{
+                    GameObject.Find($"Tile{i}{j}").GetComponent<Renderer>().material.color = Color.white;
                 }
             }
         }
-
     }
 }
+// GameObject.Find($"").GetComponent<Renderer>().material.color = Color.white; コピー用
