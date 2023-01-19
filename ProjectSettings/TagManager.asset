@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Use
+  - Nonuse
   - Active
-  - Inactive
   layers:
   - Default
   - TransparentFX
@@ -40,15 +41,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 3278557133
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Stages
-    uniqueID: 803756829
-    locked: 0
-  - name: ActiveOBJ
-    uniqueID: 3580572261
     locked: 0

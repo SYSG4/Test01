@@ -36,7 +36,7 @@ public class DropChild : MonoBehaviour
                 flagx = (int)((tilepos[i,j].x - nx) / 1.4);
                 flagy = (int)((tilepos[i,j].y - ny) / 1.4);
 
-                if(flagx == 0 && flagy == 0){
+                if(flagx == 0 && flagy == 0 && GameObject.Find($"Tile{i}{j}").tag == "Use"){
                     ti = i;
                     tj = j;
                     return;

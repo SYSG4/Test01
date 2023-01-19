@@ -7,14 +7,17 @@ public class DropParent : MonoBehaviour
 {
     public GameObject[] child;
     // 子オブジェクトを配列で格納、ピースの大きさ次第で数が変わる。アタッチ後インスペクターから子オブジェクトの指定必須。
-    public Vector2[,] tilepos = new Vector2[4, 4];
+    public Vector2[,] tilepos = new Vector2[4, 6];
     // 盤面の１つ１つのタイルの位置を格納するための変数。
     string[] target;
     // ドラッグ中近にあるタイルを格納する変数。(赤色に変える処理に使う)
-    bool ERflag;
+    // bool ERflag;
+    TileEventHandler tileEventHandler;
+
 
     void Start()
     {
+        tileEventHandler = GameObject.Find("Tiles").GetComponent<TileEventHandler>();
         target = Enumerable.Repeat("Null", child.GetLength(0) + 1).ToArray();
         // 変数の初期化、子オブジェクトの数に合わせて要素数を変える。
 
@@ -39,8 +42,17 @@ public class DropParent : MonoBehaviour
 
     public void OnMouseDown()
     {
-        ERflag = false;
-        Debug.Log(ERflag);
+        // ERflag = false;
+        // Debug.Log(ERflag);
+        try{
+            for(int i = 0; i < target.GetLength(0); i++ ){
+                GameObject.Find(target[i]).tag = "Use";
+                Debug.Log($"Object({target[i]}) set Use");
+            }
+
+        }catch{
+            Debug.Log("Target is Null");
+        }
     }
 
     public void OnMouseDrag()
@@ -59,12 +71,12 @@ public class DropParent : MonoBehaviour
                 flagx = (int)((tilepos[i, j].x - nx) / 1.4);
                 flagy = (int)((tilepos[i, j].y - ny) / 1.4);
 
-                if (flagx == 0 && flagy == 0)
+                if (flagx == 0 && flagy == 0 && GameObject.Find($"Tile{i}{j}").tag == "Use")
                 {
                     target[0] = $"Tile{i}{j}";
                 }
 
-                if (GameObject.Find($"Tile{i}{j}").tag == "Inactive")
+                if (GameObject.Find($"Tile{i}{j}").tag == "Nonuse")
                     continue;
 
                 if (target.Contains($"Tile{i}{j}"))
@@ -81,31 +93,44 @@ public class DropParent : MonoBehaviour
 
     public void OnMouseUp()
     {
-        if (target[0] != "Tile404")
+        if (target.Contains("Tile404"))
+        {
+            // 配列targetに"Til404"がある場合ピース全体が盤面に乗っていない。elseで全体が盤面に乗っている状態になる。
+        }
+        else
         {
             Vector2 targetTile = GameObject.Find(target[0]).transform.position;
             transform.position = new Vector2(targetTile.x, targetTile.y);
 
-            try
-            {
-                for (int i = 0; i < target.GetLength(0); i++)
-                {
-                    if (GameObject.Find(target[i]).tag == "Inactive" || target[i] == "Null")
-                    {
-                        ERflag = true;
-                        Debug.Log(ERflag);
-                    }
-                }
+            for(int i = 0; i < target.GetLength(0); i++ ){
+                GameObject.Find(target[i]).tag = "Active";
+                Debug.Log($"Object({target[i]}) set Active");
             }
-            catch
-            {
-                ERflag = true;
-                Debug.Log($"{ERflag}:Error");
-            }
+
+            tileEventHandler.Cleardecision();
+
+
+            // 以降のエラー処理は不要の可能性あり。
+            // try
+            // {
+            //     for (int i = 0; i < target.GetLength(0); i++)
+            //     {
+            //         if (GameObject.Find(target[i]).tag == "Nonuse" || target[i] == "Tile404")
+            //         {
+            //             ERflag = true;
+            //             Debug.Log($"{ERflag}:非アクティブの盤面に配置");
+            //         }
+            //     }
+            // }
+            // catch
+            // {
+            //     ERflag = true;
+            //     Debug.Log($"{ERflag}:盤面外に配置");
+            //     // ピース全体が有効な盤面に重なっている時のみドロップ時の吸着を有効にする-改造案
+            // }
         }
-        // 現状親オブジェクトが盤面上にないと(子オブジェクトだけ盤面上にある場合は)ドロップ時に盤面に吸着しない。
     }
-
-
 }
+// 現状親オブジェクトが盤面上にないと(子オブジェクトだけ盤面上にある場合は)ドロップ時に盤面に吸着しない。
+
 // GameObject.Find($"").GetComponent<Renderer>().material.color = Color.white; コピー用
