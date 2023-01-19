@@ -63,15 +63,24 @@ public class TileEventHandler : MonoBehaviour
     };
 
     [SerializeField] TextMeshProUGUI Stagetext;
+    [SerializeField] TextMeshProUGUI Timer;
+    double time;
+    bool stop = false;
     public int type, stage;
     void Start()
     {
-
+        time = 0;
     }
     private void Update()
     {
+        if(stop == false)
+            time += Time.deltaTime;
+            Timer.text = time.ToString("0:00.00");
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            time = 0;
+            stop = false;
             stage += 1;
             if (stage == 4)
             {
@@ -120,6 +129,7 @@ public class TileEventHandler : MonoBehaviour
                 }
             }
         }
+        stop = true;
         GameObject.Find("Clearbox").GetComponent<Renderer>().material.color = Color.red;
     }
 }
