@@ -6,11 +6,12 @@ public class MoveParent : MonoBehaviour
 {
     public float nx, ny, nz;
     public int reverse = 1;
-    public Color32 Default, Active; 
+    public Color32 Default, Active;
     //インスペクターから通常時とドラッグ中の色、透明の設定用
     public static MoveParent instance;
     SpriteRenderer sr;
-    private void Start() {
+    private void Start()
+    {
         sr = GetComponent<SpriteRenderer>();
     }
 
@@ -29,10 +30,9 @@ public class MoveParent : MonoBehaviour
     public void OnMouseDrag()
     {
         // ドラッグ中
-
         // カーソル位置にオブジェクトを移動させる
-        Vector2 objectScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
-        Vector2 objectWorldPoint = Camera.main.ScreenToWorldPoint(objectScreenPoint);
+        Vector3 objectScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y,10);
+        Vector3 objectWorldPoint = Camera.main.ScreenToWorldPoint(objectScreenPoint);
         transform.position = objectWorldPoint;
 
         sr.sharedMaterial.color = Active;
@@ -68,14 +68,19 @@ public class MoveParent : MonoBehaviour
         }
     }
 
-    public void OnMouseUp() {
+    public void OnMouseUp()
+    {
         // オブジェクトをクリック(離した)時
 
         // 透明度を戻す
         sr.sharedMaterial.color = Default;
+        Vector3 pos = transform.position;
+        pos.z = 0;
+        transform.position = pos;
     }
 
-    public void Update(){
+    public void Update()
+    {
         // 書き換えられた座標をに応じて実際にオブジェクトを回転させる、上はアニメーションあり、下はアニメーション無し。
         // 回転時にピースが背景に食い込む場合はアニメーション無し推奨
 

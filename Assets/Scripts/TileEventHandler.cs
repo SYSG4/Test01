@@ -99,6 +99,7 @@ public class TileEventHandler : MonoBehaviour
             for(int i = 0; i < Pieces.GetLength(0); i++){
                 Pieces[i].GetComponent<PositionReset>().Reset();
                 Pieces[i].GetComponent<DropParent>().Settarget();
+                Pieces[i].GetComponent<ShapeSizeHandler>().OnMouseDrag();
             }
         }
     }

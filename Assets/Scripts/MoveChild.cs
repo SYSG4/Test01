@@ -16,6 +16,7 @@ public class MoveChild : MonoBehaviour
     }
     void OnMouseDrag(){
         MoveParent.OnMouseDrag();
+        parent.GetComponent<ShapeSizeHandler>().OnMouseDrag();
     }
     private void OnMouseUp() {
         MoveParent.OnMouseUp();
