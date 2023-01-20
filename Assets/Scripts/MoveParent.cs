@@ -13,16 +13,16 @@ public class MoveParent : MonoBehaviour
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        // 現在の座標を取得
+        nx = transform.eulerAngles.x;
+        ny = transform.eulerAngles.y;
+        nz = transform.eulerAngles.z;
     }
 
     public void OnMouseDown()
     {
         // オブジェクトをクリック(押し込み)時
-
-        // 現在の座標を取得
-        nx = transform.eulerAngles.x;
-        ny = transform.eulerAngles.y;
-        nz = transform.eulerAngles.z;
+        
         // クリックしたオブジェクトを半透明化する
         sr.sharedMaterial.color = Default;
     }

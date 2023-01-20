@@ -94,7 +94,15 @@ public class DropParent : MonoBehaviour
     {
         if (target.Contains("Tile404"))
         {
-            // 配列targetに"Tile404"がある場合ピース全体が盤面に乗っていない。elseで全体が盤面に乗っている状態になる。
+            // ドロップ時盤面に入らない場合。に元の位置に戻す処理
+            // for(int i =0; i < tilepos.GetLength(0); i++)
+            //     for(int j = 0; j < tilepos.GetLength(1); j++)
+            //         if (target.Contains($"Tile{i}{j}"))
+            //             GameObject.Find($"Tile{i}{j}").GetComponent<Renderer>().material.color = Color.white;
+
+            // this.GetComponent<PositionReset>().Reset();
+            // Settarget();
+            // GetComponent<ShapeSizeHandler>().OnMouseDrag();
         }
         else
         {

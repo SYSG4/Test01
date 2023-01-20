@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 public class TileEventHandler : MonoBehaviour
 {
-    int[,,,] TileUse = new int[2, 4, 4, 6]{
+    int[,,,] TileUse = new int[2,4,4,6]{
         // A-0,B-0はデバッグ用の盤面
         {
             {
