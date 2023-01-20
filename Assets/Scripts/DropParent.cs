@@ -18,7 +18,6 @@ public class DropParent : MonoBehaviour
     void Start()
     {
         tileEventHandler = GameObject.Find("Tiles").GetComponent<TileEventHandler>();
-        target = Enumerable.Repeat("Null", child.GetLength(0) + 1).ToArray();
         // 変数の初期化、子オブジェクトの数に合わせて要素数を変える。
 
         for (int i = 0; i < tilepos.GetLength(0); i++)
@@ -30,7 +29,7 @@ public class DropParent : MonoBehaviour
         }
     }
 
-    void Settarget()
+    public void Settarget()
     {
         target = Enumerable.Repeat("Tile404", child.GetLength(0) + 1).ToArray();
         for (int i = 0; i < child.GetLength(0); i++)
@@ -95,7 +94,7 @@ public class DropParent : MonoBehaviour
     {
         if (target.Contains("Tile404"))
         {
-            // 配列targetに"Til404"がある場合ピース全体が盤面に乗っていない。elseで全体が盤面に乗っている状態になる。
+            // 配列targetに"Tile404"がある場合ピース全体が盤面に乗っていない。elseで全体が盤面に乗っている状態になる。
         }
         else
         {
@@ -108,7 +107,6 @@ public class DropParent : MonoBehaviour
             }
 
             tileEventHandler.Cleardecision();
-
 
             // 以降のエラー処理は不要の可能性あり。
             // try
@@ -131,6 +129,6 @@ public class DropParent : MonoBehaviour
         }
     }
 }
-// 現状親オブジェクトが盤面上にないと(子オブジェクトだけ盤面上にある場合は)ドロップ時に盤面に吸着しない。
+// 現状ピース全体が有効な(黒くなってない)盤面上にないとドロップ時に盤面に吸着しない。
 
 // GameObject.Find($"").GetComponent<Renderer>().material.color = Color.white; コピー用

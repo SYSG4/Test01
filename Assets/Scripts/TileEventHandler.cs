@@ -64,12 +64,15 @@ public class TileEventHandler : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI Stagetext;
     [SerializeField] TextMeshProUGUI Timer;
+
+    GameObject[] Pieces;
     double time;
     bool stop = false;
     public int type, stage;
     void Start()
     {
         time = 0;
+        Pieces = GameObject.FindGameObjectsWithTag("Piece");
     }
     private void Update()
     {
@@ -93,6 +96,10 @@ public class TileEventHandler : MonoBehaviour
                 Stagetext.text = $"B-{stage}";
 
             TileUpdate();
+            for(int i = 0; i < Pieces.GetLength(0); i++){
+                Pieces[i].GetComponent<PositionReset>().Reset();
+                Pieces[i].GetComponent<DropParent>().Settarget();
+            }
         }
     }
 

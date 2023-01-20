@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MoveParent : MonoBehaviour
 {
-    float nx, ny, nz;
-    int reverse = 1;
+    public float nx, ny, nz;
+    public int reverse = 1;
     public Color32 Default, Active; 
     //インスペクターから通常時とドラッグ中の色、透明の設定用
     public static MoveParent instance;
@@ -22,7 +22,6 @@ public class MoveParent : MonoBehaviour
         nx = transform.eulerAngles.x;
         ny = transform.eulerAngles.y;
         nz = transform.eulerAngles.z;
-
         // クリックしたオブジェクトを半透明化する
         sr.sharedMaterial.color = Default;
     }
@@ -38,40 +37,33 @@ public class MoveParent : MonoBehaviour
 
         sr.sharedMaterial.color = Active;
 
-
         // Q,W,E,A,S,Dキー入力を受けて各回転軸の座標を書き換える
         if (Input.GetKeyDown(KeyCode.W))
         {
-            Debug.Log("W");
             nx = Mathf.Repeat(nx += 180, 360);
             reverse = reverse * -1;
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            Debug.Log("S");
             nx = Mathf.Repeat(nx -= 180, 360);
             reverse = reverse * -1;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("E");
             ny = Mathf.Repeat(ny += 180, 360);
             reverse = reverse * -1;
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log("Q");
             ny = Mathf.Repeat(ny -= 180, 360);
             reverse = reverse * -1;
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log("A");
             nz = Mathf.Repeat(nz += (90 * reverse), 360);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            Debug.Log("D");
             nz = Mathf.Repeat(nz -= (90 * reverse), 360);
         }
     }
@@ -85,7 +77,7 @@ public class MoveParent : MonoBehaviour
 
     public void Update(){
         // 書き換えられた座標をに応じて実際にオブジェクトを回転させる、上はアニメーションあり、下はアニメーション無し。
-        // 描画バグ対策のためアニメーション無し推奨
+        // 回転時にピースが背景に食い込む場合はアニメーション無し推奨
 
         transform.rotation = (Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(nx, ny, nz), 1f));
         // transform.eulerAngles = new Vector3(nx,ny,nz);
