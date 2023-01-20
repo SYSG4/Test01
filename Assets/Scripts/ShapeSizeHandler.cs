@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShapeSizeHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
     public void OnMouseDrag() {
         if(transform.position.x < 12)
             transform.localScale = new Vector3(3,3,1);
@@ -13,4 +12,4 @@ public class ShapeSizeHandler : MonoBehaviour
 
     }
 }
-// ピースを元サイズで置いておくとデカすぎるので最初置かれているエリアにドロップすると小さくなるようにしたい。
+// ピースを元サイズで置いておくとデカすぎるので最初置かれているエリアにドロップすると小さくなるようにした。
