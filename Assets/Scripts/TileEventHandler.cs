@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using TMPro;
 public class TileEventHandler : MonoBehaviour
 {
     int[,,,] TileUse = new int[2,4,4,6]{
-        // A-0,B-0はデバッグ用の盤面
+        // A-0,B-0はデバッグ用の盤面(ほぼ全域白)
         {
             {
                 //A-0
@@ -33,6 +34,7 @@ public class TileEventHandler : MonoBehaviour
                 {1,1,1,1,1,1},
             },
         },
+        // A盤面に終わり
         {
             {
                 // B-0
@@ -78,7 +80,7 @@ public class TileEventHandler : MonoBehaviour
     {
         if(stop == false)
             time += Time.deltaTime;
-            Timer.text = time.ToString("0:00.00");
+            Timer.text = ($"{Math.Floor(time/60)}:{Math.Round(time % 60 ,2 ,  MidpointRounding.AwayFromZero).ToString("00.00")}");
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
