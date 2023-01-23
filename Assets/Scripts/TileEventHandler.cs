@@ -146,3 +146,5 @@ public class TileEventHandler : MonoBehaviour
 
 // using UnityEngine.SceneManagement;
 // SceneManager.LoadScene (SceneManager.GetActiveScene().name);
+
+// スコアやタイムの保持について https://www.sejuku.net/blog/69991
