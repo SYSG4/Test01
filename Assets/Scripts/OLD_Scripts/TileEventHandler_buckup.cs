@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using TMPro;
-public class TileEventHandler : MonoBehaviour
+public class TEHbuckup : MonoBehaviour
 {
     int[,,,] TileUse = new int[2,31,4,6]{
         // A-0,B-0はデバッグ用の盤面(ほぼ全域白)
@@ -409,22 +409,10 @@ public class TileEventHandler : MonoBehaviour
     double time;
     bool stop = false;
     public int type, stage;
-
-    GameObject[,] tile = new GameObject[4,6];
     void Start()
     {
         time = 0;
         Pieces = GameObject.FindGameObjectsWithTag("Piece");
-
-        // 非表示用処理
-        for (int i = 0; i < TileUse.GetLength(2); i++)
-        {
-            for (int j = 0; j < TileUse.GetLength(3); j++)
-            {
-                tile[i,j] = GameObject.Find($"Tile{i}{j}");
-            }
-        }
-        // 非表示用処理ここまで
     }
     private void Update()
     {
@@ -464,15 +452,13 @@ public class TileEventHandler : MonoBehaviour
             {
                 if (TileUse[type, stage, i, j] == 0)
                 {
-                    // GameObject.Find($"Tile{i}{j}").GetComponent<Renderer>().material.color = Color.black;
-                    tile[i,j].SetActive(false);
-                    tile[i,j].tag = "Nonuse";
+                    GameObject.Find($"Tile{i}{j}").GetComponent<Renderer>().material.color = Color.black;
+                    GameObject.Find($"Tile{i}{j}").tag = "Nonuse";
                 }
                 else
                 {
-                    // GameObject.Find($"Tile{i}{j}").GetComponent<Renderer>().material.color = new Color32(0,85,34,255);
-                    tile[i,j].SetActive(true);
-                    tile[i,j].tag = "Use";
+                    GameObject.Find($"Tile{i}{j}").GetComponent<Renderer>().material.color = new Color32(0,85,34,255);
+                    GameObject.Find($"Tile{i}{j}").tag = "Use";
                 }
             }
         }
@@ -484,7 +470,7 @@ public class TileEventHandler : MonoBehaviour
         {
             for (int j = 0; j < TileUse.GetLength(3); j++)
             {
-                if (tile[i,j].tag == "Use")
+                if (GameObject.Find($"Tile{i}{j}").tag == "Use")
                 {
                     GameObject.Find("Clearbox").GetComponent<Renderer>().material.color = Color.white;
                     return;

@@ -13,7 +13,7 @@ public class DropParent : MonoBehaviour
     // ドラッグ中近にあるタイルを格納する変数。(赤色に変える処理に使う)
     // bool ERflag;
     TileEventHandler tileEventHandler;
-
+    Color32 tileDefault = new Color32(0,85,34,255),tileActive = Color.red;
 
     void Start()
     {
@@ -80,11 +80,11 @@ public class DropParent : MonoBehaviour
 
                 if (target.Contains($"Tile{i}{j}"))
                 {
-                    GameObject.Find($"Tile{i}{j}").GetComponent<Renderer>().material.color = Color.red;
+                    GameObject.Find($"Tile{i}{j}").GetComponent<Renderer>().material.color = tileActive;
                 }
                 else
                 {
-                    GameObject.Find($"Tile{i}{j}").GetComponent<Renderer>().material.color = Color.white;
+                    GameObject.Find($"Tile{i}{j}").GetComponent<Renderer>().material.color = tileDefault;
                 }
             }
         }
