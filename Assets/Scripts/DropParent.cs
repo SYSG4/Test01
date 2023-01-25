@@ -46,11 +46,11 @@ public class DropParent : MonoBehaviour
         try{
             for(int i = 0; i < target.GetLength(0); i++ ){
                 GameObject.Find(target[i]).tag = "Use";
-                Debug.Log($"Object({target[i]}) set Use");
+                // Debug.Log($"Object({target[i]}) set Use");
             }
 
         }catch{
-            Debug.Log("Target is Null");
+            // Debug.Log("Target is Null");
         }
     }
 
@@ -111,7 +111,7 @@ public class DropParent : MonoBehaviour
 
             for(int i = 0; i < target.GetLength(0); i++ ){
                 GameObject.Find(target[i]).tag = "Active";
-                Debug.Log($"Object({target[i]}) set Active");
+                // Debug.Log($"Object({target[i]}) set Active");
             }
 
             tileEventHandler.Cleardecision();
