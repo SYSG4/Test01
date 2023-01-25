@@ -13,7 +13,7 @@ public class DropParent : MonoBehaviour
     // ドラッグ中近にあるタイルを格納する変数。(赤色に変える処理に使う)
     // bool ERflag;
     TileEventHandler tileEventHandler;
-    Color32 tileDefault = new Color32(0,85,34,255),tileActive = Color.red;
+    Color32 tileDefault = new Color32(0,85,34,255),tileActive = Color.white;
 
     void Start()
     {
