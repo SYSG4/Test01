@@ -408,7 +408,7 @@ public class TileEventHandler : MonoBehaviour
     GameObject[] Pieces;
     double time;
     bool stop = false;
-    public int type, stage;
+    int type, stage;
     void Start()
     {
         time = 0;

@@ -84,7 +84,7 @@ public class MoveParent : MonoBehaviour
         // 書き換えられた座標をに応じて実際にオブジェクトを回転させる、上はアニメーションあり、下はアニメーション無し。
         // 回転時にピースが背景に食い込む場合はアニメーション無し推奨
 
-        transform.rotation = (Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(nx, ny, nz), 1f));
+        transform.rotation = (Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(nx, ny, nz), 90 * Time.deltaTime));
         // transform.eulerAngles = new Vector3(nx,ny,nz);
     }
 }
