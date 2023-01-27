@@ -111,6 +111,7 @@ public class DropParent : MonoBehaviour
 
             for(int i = 0; i < target.GetLength(0); i++ ){
                 GameObject.Find(target[i]).tag = "Active";
+                GameObject.Find(target[i]).GetComponent<Renderer>().material.color = new Color32(0,85,34,255);
                 // Debug.Log($"Object({target[i]}) set Active");
             }
 
