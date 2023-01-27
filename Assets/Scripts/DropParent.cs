@@ -98,7 +98,7 @@ public class DropParent : MonoBehaviour
             // for(int i =0; i < tilepos.GetLength(0); i++)
             //     for(int j = 0; j < tilepos.GetLength(1); j++)
             //         if (target.Contains($"Tile{i}{j}"))
-            //             GameObject.Find($"Tile{i}{j}").GetComponent<Renderer>().material.color = Color.white;
+            //             GameObject.Find($"Tile{i}{j}").GetComponent<Renderer>().material.color = new Color32(0,85,34,255);
 
             // this.GetComponent<PositionReset>().Reset();
             // Settarget();
