@@ -45,12 +45,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer 1
+  - name: Tiles
     uniqueID: 3512749025
     locked: 0
-  - name: New Layer 2
+  - name: TileOutlines
     uniqueID: 3699355357
     locked: 0
-  - name: Outlines
+  - name: Pieces
+    uniqueID: 345902747
+    locked: 0
+  - name: PieceOutlines
     uniqueID: 3852189167
+    locked: 0
+  - name: UIs
+    uniqueID: 1338708041
+    locked: 0
+  - name: SceneChanger
+    uniqueID: 102622509
     locked: 0

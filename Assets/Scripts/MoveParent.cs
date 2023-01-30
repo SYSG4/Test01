@@ -31,7 +31,7 @@ public class MoveParent : MonoBehaviour
     {
         // ドラッグ中
         // カーソル位置にオブジェクトを移動させる
-        Vector3 objectScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y,10);
+        Vector3 objectScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y,140);
         Vector3 objectWorldPoint = Camera.main.ScreenToWorldPoint(objectScreenPoint);
         transform.position = objectWorldPoint;
 
