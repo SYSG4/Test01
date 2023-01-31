@@ -23,7 +23,7 @@ public class ChangerCanvas : MonoBehaviour
             //n秒遅延させる処理
                 delay = delay - 1* Time.deltaTime;
                 if(delay > 0){
-                    Debug.Log(delay);
+                    // Debug.Log(delay);
                     return;
                 }
                 TargetPos = DefaultPos;

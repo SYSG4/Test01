@@ -8,6 +8,7 @@ TagManager:
   - Nonuse
   - Active
   - Piece
+  - StageText
   layers:
   - Default
   - TransparentFX

@@ -408,17 +408,34 @@ public class TileEventHandler : MonoBehaviour
     GameObject[] Pieces;
     double time;
     bool stop = false;
-    int type, stage;
+    int type , stage;
     void Start()
     {
         time = 0;
         Pieces = GameObject.FindGameObjectsWithTag("Piece");
+        stage = StaticVar.stage;
+        if(StaticVar.type == "N"){
+            type = 0;
+            Stagetext.text = $"N-{stage}";
+        }else{
+            type = 1;
+            Stagetext.text = $"H-{stage}";
+        }
+        TileUpdate();
+        Debug.Log($"Type:{type} Stage:{stage}");
+
+        if(StaticVar.gameMode == 0){
+            stop = true;
+            Timer.text = "FreePlay";
+            Debug.Log("Set Timer Text");
+        }
     }
     private void Update()
     {
-        if(stop == false)
+        if(stop == false){
             time += Time.deltaTime;
             Timer.text = ($"{Math.Floor(time/60)}:{Math.Round(time % 60 ,2 ,  MidpointRounding.AwayFromZero).ToString("00.00")}");
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -431,9 +448,9 @@ public class TileEventHandler : MonoBehaviour
             }
             stage = stage % 31;
             if (type == 0)
-                Stagetext.text = $"A-{stage}";
+                Stagetext.text = $"N-{stage}";
             else
-                Stagetext.text = $"B-{stage}";
+                Stagetext.text = $"H-{stage}";
 
             TileUpdate();
             for(int i = 0; i < Pieces.GetLength(0); i++){
@@ -474,13 +491,12 @@ public class TileEventHandler : MonoBehaviour
             {
                 if (GameObject.Find($"Tile{i}{j}").tag == "Use")
                 {
-                    GameObject.Find("Clearbox").GetComponent<Renderer>().material.color = Color.white;
                     return;
                 }
             }
         }
+        // これ以降にクリア時の処理を書く
         stop = true;
-        GameObject.Find("Clearbox").GetComponent<Renderer>().material.color = Color.red;
     }
 }
 
