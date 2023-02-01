@@ -44,7 +44,7 @@ public class StageSelect : MonoBehaviour
         gameObject.AddComponent<Rigidbody2D>().gravityScale = 40;
         transform.position += new Vector3(0,0,10);
         gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-8000,-2000));
-        gameObject.GetComponent<Rigidbody2D>().AddTorque(300);
+        gameObject.GetComponent<Rigidbody2D>().AddTorque(5,ForceMode2D.Impulse);
     }
     
 }

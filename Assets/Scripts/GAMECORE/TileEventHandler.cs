@@ -404,6 +404,7 @@ public class TileEventHandler : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI Stagetext;
     [SerializeField] TextMeshProUGUI Timer;
+    [SerializeField] GameObject UIMObj;
 
     GameObject[] Pieces;
     double time;
@@ -439,18 +440,18 @@ public class TileEventHandler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            time = 0;
-            stop = false;
-            stage += 1;
-            if (stage == 31)
-            {
-                type = 1 - type;
-            }
-            stage = stage % 31;
-            if (type == 0)
-                Stagetext.text = $"N-{stage}";
-            else
-                Stagetext.text = $"H-{stage}";
+            // time = 0;
+            // stop = false;
+            // stage += 1;
+            // if (stage == 31)
+            // {
+            //     type = 1 - type;
+            // }
+            // stage = stage % 31;
+            // if (type == 0)
+            //     Stagetext.text = $"N-{stage}";
+            // else
+            //     Stagetext.text = $"H-{stage}";
 
             TileUpdate();
             for(int i = 0; i < Pieces.GetLength(0); i++){
@@ -496,6 +497,7 @@ public class TileEventHandler : MonoBehaviour
             }
         }
         // これ以降にクリア時の処理を書く
+        UIMObj.GetComponent<UIManeger>().ClearButton();
         stop = true;
     }
 }
