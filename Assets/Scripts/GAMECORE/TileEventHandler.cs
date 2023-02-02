@@ -407,11 +407,24 @@ public class TileEventHandler : MonoBehaviour
     [SerializeField] GameObject UIMObj;
 
     GameObject[] Pieces;
-    double time;
-    bool stop = false;
+    ChangerCanvas CC;
+    double time,delay;
+    bool stop = true;
     int type , stage;
     void Start()
     {
+        CC = GameObject.Find("ChangerCanvas").GetComponent<ChangerCanvas>();
+        if(StaticVar.gameMode == 0){
+            stop = true;
+            Timer.text = "FreePlay";
+            Debug.Log("Set Timer Text");
+        }else
+            StaticVar.stage = CC.stages[CC.stageCount -1];
+
+        if(CC.stageCount == 1)
+            delay = 3;
+        else
+            delay = 1;
         time = 0;
         Pieces = GameObject.FindGameObjectsWithTag("Piece");
         stage = StaticVar.stage;
@@ -424,12 +437,6 @@ public class TileEventHandler : MonoBehaviour
         }
         TileUpdate();
         Debug.Log($"Type:{type} Stage:{stage}");
-
-        if(StaticVar.gameMode == 0){
-            stop = true;
-            Timer.text = "FreePlay";
-            Debug.Log("Set Timer Text");
-        }
     }
     private void Update()
     {
@@ -460,6 +467,11 @@ public class TileEventHandler : MonoBehaviour
                 Pieces[i].GetComponent<ShapeSizeHandler>().OnMouseDrag();
             }
         }
+        if(StaticVar.gameMode == 1 && delay > 0)
+            delay -= 1*Time.deltaTime;
+        else if(delay <= 0 && StaticVar.stage == stage)
+            stop = false;
+
     }
 
     private void TileUpdate()
@@ -492,13 +504,27 @@ public class TileEventHandler : MonoBehaviour
             {
                 if (GameObject.Find($"Tile{i}{j}").tag == "Use")
                 {
+                    Debug.Log("return");
                     return;
                 }
             }
         }
         // これ以降にクリア時の処理を書く
-        UIMObj.GetComponent<UIManeger>().ClearButton();
         stop = true;
+        if(StaticVar.gameMode == 0)
+            UIMObj.GetComponent<UIManeger>().ClearButton();
+        else if(CC.stageCount < 10){
+            CC.clearTime[CC.stageCount - 1] = time;
+            StaticVar.stage = CC.stages[CC.stageCount];
+            CC.stageCount += 1;
+            CC.SceneChange($"Next {CC.stageCount}","Play");
+        }else{
+            CC.clearTime[CC.stageCount - 1] = time;
+            StaticVar.stage = 0;
+            UIMObj.GetComponent<UIManeger>().ClearButton();
+        }
+
+
     }
 }
 

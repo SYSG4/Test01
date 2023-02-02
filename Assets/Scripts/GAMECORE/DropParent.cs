@@ -95,14 +95,14 @@ public class DropParent : MonoBehaviour
         if (target.Contains("Tile404"))
         {
             // ドロップ時盤面に入らない場合。に元の位置に戻す処理
-            // for(int i =0; i < tilepos.GetLength(0); i++)
-            //     for(int j = 0; j < tilepos.GetLength(1); j++)
-            //         if (target.Contains($"Tile{i}{j}"))
-            //             GameObject.Find($"Tile{i}{j}").GetComponent<Renderer>().material.color = new Color32(0,85,34,255);
+            for(int i =0; i < tilepos.GetLength(0); i++)
+                for(int j = 0; j < tilepos.GetLength(1); j++)
+                    if (target.Contains($"Tile{i}{j}"))
+                        GameObject.Find($"Tile{i}{j}").GetComponent<Renderer>().material.color = new Color32(0,85,34,255);
 
-            // this.GetComponent<PositionReset>().Reset();
-            // Settarget();
-            // GetComponent<ShapeSizeHandler>().OnMouseDrag();
+            this.GetComponent<PositionReset>().Reset();
+            Settarget();
+            GetComponent<ShapeSizeHandler>().OnMouseDrag();
         }
         else
         {

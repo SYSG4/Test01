@@ -15,12 +15,12 @@ public class StageSelect : MonoBehaviour
             // GetComponent<Image>().color = new Color32(0,255,255,255);
             GetComponent<Image>().sprite = SpriteNormal;
             child.GetComponent<Text>().color = new Color32(0,0,0,255);
-            Debug.Log("Set color SkyBlue");
+            // Debug.Log("Set color SkyBlue");
         }else{
             // GetComponent<Image>().color = new Color32(255,0,0,255);
             GetComponent<Image>().sprite = SpriteHard;
             child.GetComponent<Text>().color = new Color32(255,255,255,255);
-            Debug.Log("Set color Red");
+            // Debug.Log("Set color Red");
         }
 
         if(StaticVar.stage < 11)

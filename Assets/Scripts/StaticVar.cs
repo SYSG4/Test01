@@ -10,7 +10,7 @@ public class StaticVar : MonoBehaviour
     private void Start() {
         stage=10;
         type="N";
-        gameMode = 1;
+        gameMode = 0;
         Debug.Log("StaticVar was running");
     }
 }
