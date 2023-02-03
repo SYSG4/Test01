@@ -460,18 +460,13 @@ public class TileEventHandler : MonoBehaviour
             // else
             //     Stagetext.text = $"H-{stage}";
 
-            // TileUpdate();
-            // for(int i = 0; i < Pieces.GetLength(0); i++){
-            //     Pieces[i].GetComponent<PositionReset>().Reset();
-            //     Pieces[i].GetComponent<DropParent>().Settarget();
-            //     Pieces[i].GetComponent<ShapeSizeHandler>().OnMouseDrag();
-            // }
             CC.clearTime[CC.stageCount - 1] = time;
             StaticVar.stage = CC.stages[CC.stageCount];
             Debug.Log($"index:{CC.stageCount} Stage:{CC.stages[CC.stageCount]}");
             CC.stageCount += 1;
             CC.SceneChange($"Next {CC.stageCount}","Play");
         }
+
         if(StaticVar.gameMode == 1 && delay > 0)
             delay -= 1*Time.deltaTime;
         else if(delay <= 0 && StaticVar.stage == stage)
@@ -517,7 +512,7 @@ public class TileEventHandler : MonoBehaviour
         // これ以降にクリア時の処理を書く
         stop = true;
         if(StaticVar.gameMode == 0)
-            UIMObj.GetComponent<UIManeger>().ClearButton();
+            UIMObj.GetComponent<UIManeger>().ClearButtonFP();
         else if(CC.stageCount < 10){
             CC.clearTime[CC.stageCount - 1] = time;
             StaticVar.stage = CC.stages[CC.stageCount];
@@ -527,10 +522,24 @@ public class TileEventHandler : MonoBehaviour
         }else{
             CC.clearTime[CC.stageCount - 1] = time;
             StaticVar.stage = 0;
-            UIMObj.GetComponent<UIManeger>().ClearButton();
+            UIMObj.GetComponent<UIManeger>().ClearButtonTA();
+            // ここにTA終了時のタイム、評価等のテキストを更新するための処理を書く。
+            double total = 0;
+            for(int i = 0; i < 10; i++){
+                GameObject.Find($"TimeText{i}").GetComponent<TextMeshProUGUI>().text = $"{Math.Floor(CC.clearTime[i]/60)}:{Math.Round(CC.clearTime[i] % 60 ,2 ,  MidpointRounding.AwayFromZero).ToString("00.00")}";
+                total +=  CC.clearTime[i];
+            }
+            GameObject.Find($"TimeTextTotal").GetComponent<TextMeshProUGUI>().text = $"{Math.Floor(total/60)}:{Math.Round(total % 60 ,2 ,  MidpointRounding.AwayFromZero).ToString("00.00")}";
         }
+    }
 
-
+    public void ResetButton() {
+        TileUpdate();
+        for(int i = 0; i < Pieces.GetLength(0); i++){
+            Pieces[i].GetComponent<PositionReset>().Reset();
+            Pieces[i].GetComponent<DropParent>().Settarget();
+            Pieces[i].GetComponent<ShapeSizeHandler>().OnMouseDrag();
+        }
     }
 }
 

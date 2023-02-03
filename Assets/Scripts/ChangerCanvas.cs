@@ -69,12 +69,12 @@ public class ChangerCanvas : MonoBehaviour
         TargetPos = ChangePos;
         TextBox.text = "Time Attack";
 
-        for(int i = 0;i < stages.GetLength(0); i ++)
-            Debug.Log($"stages:{stages[i]}++++++++++++++++");
+        // for(int i = 0;i < stages.GetLength(0); i ++)
+        //     Debug.Log($"stages:{stages[i]}++++++++++++++++");
             stages = new int[10];
         // stages = Enumerable.Repeat(0, 10).ToArray();
-        for(int i = 0;i < stages.GetLength(0); i ++)
-            Debug.Log($"stages:{stages[i]}------------");
+        // for(int i = 0;i < stages.GetLength(0); i ++)
+        //     Debug.Log($"stages:{stages[i]}------------");
 
         List<int> numbers = new List<int>();
         for (int i = 1; i <= 30; i++) {
@@ -88,9 +88,9 @@ public class ChangerCanvas : MonoBehaviour
             numbers.RemoveAt(index);
             j++;
         }
-        Debug.Log($"====================================================================前後配列に不具合あり");
-        for(int i = 0;i < 10; i ++)
-            Debug.Log($"stages:{stages[i]}========{i}");
+        // Debug.Log($"====================================================================前後配列に不具合あり");
+        // for(int i = 0;i < 10; i ++)
+        //     // Debug.Log($"stages:{stages[i]}========{i}");
     }
 
     public void ModeButtonN(){

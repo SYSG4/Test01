@@ -8,7 +8,8 @@ public class UIManeger : MonoBehaviour
     // [SerializeField] GameObject GameScene;
     [SerializeField] GameObject MenuScene;
     [SerializeField] GameObject KakuninScene;
-    [SerializeField] GameObject ClearPanel;
+    [SerializeField] GameObject ClearPanelFP;
+    [SerializeField] GameObject ClearPanelTA;
 
     // Start is called before the first frame update
     // void Start()
@@ -43,9 +44,14 @@ public class UIManeger : MonoBehaviour
     }
 
     // クリア演出確認用
-    public void ClearButton()
+    public void ClearButtonFP()
     {
-        ClearPanel.SetActive(true);
+        ClearPanelFP.SetActive(true);
+    }
+
+    public void ClearButtonTA()
+    {
+        ClearPanelTA.SetActive(true);
     }
 
 
