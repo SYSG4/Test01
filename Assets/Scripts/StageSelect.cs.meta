@@ -4,8 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - SpriteNormal: {fileID: 21300000, guid: b2bac9423c8dd524d82917bba974c614, type: 3}
-  - SpriteHard: {fileID: 21300000, guid: 54251c0864526ad4baa3a5872c15ddbb, type: 3}
+  - SpriteNormal: {fileID: 21300000, guid: 8d6bfc6624194d448908ef0f882cfacc, type: 3}
+  - SpriteHard: {fileID: 21300000, guid: c301c8090acdab94f9bd63000c6e9e05, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
