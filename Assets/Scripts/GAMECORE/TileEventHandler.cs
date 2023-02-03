@@ -460,12 +460,17 @@ public class TileEventHandler : MonoBehaviour
             // else
             //     Stagetext.text = $"H-{stage}";
 
-            TileUpdate();
-            for(int i = 0; i < Pieces.GetLength(0); i++){
-                Pieces[i].GetComponent<PositionReset>().Reset();
-                Pieces[i].GetComponent<DropParent>().Settarget();
-                Pieces[i].GetComponent<ShapeSizeHandler>().OnMouseDrag();
-            }
+            // TileUpdate();
+            // for(int i = 0; i < Pieces.GetLength(0); i++){
+            //     Pieces[i].GetComponent<PositionReset>().Reset();
+            //     Pieces[i].GetComponent<DropParent>().Settarget();
+            //     Pieces[i].GetComponent<ShapeSizeHandler>().OnMouseDrag();
+            // }
+            CC.clearTime[CC.stageCount - 1] = time;
+            StaticVar.stage = CC.stages[CC.stageCount];
+            Debug.Log($"index:{CC.stageCount} Stage:{CC.stages[CC.stageCount]}");
+            CC.stageCount += 1;
+            CC.SceneChange($"Next {CC.stageCount}","Play");
         }
         if(StaticVar.gameMode == 1 && delay > 0)
             delay -= 1*Time.deltaTime;
@@ -516,6 +521,7 @@ public class TileEventHandler : MonoBehaviour
         else if(CC.stageCount < 10){
             CC.clearTime[CC.stageCount - 1] = time;
             StaticVar.stage = CC.stages[CC.stageCount];
+            Debug.Log($"index:{CC.stageCount} Stage:{CC.stages[CC.stageCount]}");
             CC.stageCount += 1;
             CC.SceneChange($"Next {CC.stageCount}","Play");
         }else{

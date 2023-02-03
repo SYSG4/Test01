@@ -1707,7 +1707,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30D5\u30EA\u30FC\u30B2\u30FC\u30E0"
+  m_Text: "\u30D5\u30EA\u30FC\u30D7\u30EC\u30A4"
 --- !u!222 &931636309
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3878,7 +3878,7 @@ GameObject:
   - component: {fileID: 2046410071}
   - component: {fileID: 2046410070}
   m_Layer: 5
-  m_Name: "\u30D5\u30EA\u30FC\u30B2\u30FC\u30E0"
+  m_Name: "\u30D5\u30EA\u30FC\u30D7\u30EC\u30A4"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

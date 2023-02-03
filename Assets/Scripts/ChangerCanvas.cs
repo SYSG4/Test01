@@ -69,20 +69,28 @@ public class ChangerCanvas : MonoBehaviour
         TargetPos = ChangePos;
         TextBox.text = "Time Attack";
 
-        stages = Enumerable.Repeat(0, 10).ToArray();
+        for(int i = 0;i < stages.GetLength(0); i ++)
+            Debug.Log($"stages:{stages[i]}++++++++++++++++");
+            stages = new int[10];
+        // stages = Enumerable.Repeat(0, 10).ToArray();
+        for(int i = 0;i < stages.GetLength(0); i ++)
+            Debug.Log($"stages:{stages[i]}------------");
+
         List<int> numbers = new List<int>();
         for (int i = 1; i <= 30; i++) {
             numbers.Add(i);
         }
         int j = 0;
-        while (stages.Contains(0)) {
+        while (j < 10) {
             int index = UnityEngine.Random.Range(0, numbers.Count);
             stages[j] = numbers[index];
+            Debug.Log($"stage{j}:{stages[j]} = {numbers[index]}");
             numbers.RemoveAt(index);
             j++;
         }
-        for(int i = 0;i < stages.GetLength(0); i ++)
-            Debug.Log($"stages:{stages[i]}");
+        Debug.Log($"====================================================================前後配列に不具合あり");
+        for(int i = 0;i < 10; i ++)
+            Debug.Log($"stages:{stages[i]}========{i}");
     }
 
     public void ModeButtonN(){
