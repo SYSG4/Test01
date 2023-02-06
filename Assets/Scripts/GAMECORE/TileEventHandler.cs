@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 public class TileEventHandler : MonoBehaviour
 {
     int[,,,] TileUse = new int[2,31,4,6]{
@@ -406,6 +407,8 @@ public class TileEventHandler : MonoBehaviour
     [SerializeField] TextMeshProUGUI Timer;
     [SerializeField] GameObject UIMObj;
 
+    [SerializeField] Sprite S,A,B,C,SYukkuri,AYukkuri,BYukkuri,CYukkuri,SText,AText,BText,CText;
+
     GameObject[] Pieces;
     ChangerCanvas CC;
     double time,delay;
@@ -530,6 +533,30 @@ public class TileEventHandler : MonoBehaviour
                 total +=  CC.clearTime[i];
             }
             GameObject.Find($"TimeTextTotal").GetComponent<TextMeshProUGUI>().text = $"{Math.Floor(total/60)}:{Math.Round(total % 60 ,2 ,  MidpointRounding.AwayFromZero).ToString("00.00")}";
+            //タイムで区切ってスコア評価をつける、動的にゆっくりの画像差し替え、テキストの変更。
+            // 暫定基準値Normal S:1:30  A:2:30  B:4:00    hard S:2:00  A:3:00   B:5:00  
+            if(StaticVar.type == "N"){
+                // Normal時
+                if(total < 90){
+                    GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = S;
+                    GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = SYukkuri;
+                    // GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>();
+                }else if(total < 150){
+                    GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = A;
+                    GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = AYukkuri;
+
+                }else if(total < 240){
+                    GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = B;
+                    GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = BYukkuri;
+
+                }else{
+                    GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = C;
+                    GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = CYukkuri;
+
+                }
+            }else{
+                // Hard時
+            }
         }
     }
 
