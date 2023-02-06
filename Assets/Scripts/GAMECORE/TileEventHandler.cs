@@ -540,22 +540,39 @@ public class TileEventHandler : MonoBehaviour
                 if(total < 90){
                     GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = S;
                     GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = SYukkuri;
-                    // GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>();
+                    GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = SText;
                 }else if(total < 150){
                     GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = A;
                     GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = AYukkuri;
-
+                    GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = AText;
                 }else if(total < 240){
                     GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = B;
                     GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = BYukkuri;
-
+                    GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = BText;
                 }else{
                     GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = C;
                     GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = CYukkuri;
-
+                    GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = CText;
                 }
             }else{
                 // Hard時
+                if(total < 120){
+                    GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = S;
+                    GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = SYukkuri;
+                    GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = SText;
+                }else if(total < 180){
+                    GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = A;
+                    GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = AYukkuri;
+                    GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = AText;
+                }else if(total < 300){
+                    GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = B;
+                    GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = BYukkuri;
+                    GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = BText;
+                }else{
+                    GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = C;
+                    GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = CYukkuri;
+                    GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = CText;
+                }
             }
         }
     }
