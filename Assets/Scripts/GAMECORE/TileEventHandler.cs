@@ -533,8 +533,9 @@ public class TileEventHandler : MonoBehaviour
                 total +=  CC.clearTime[i];
             }
             GameObject.Find($"TimeTextTotal").GetComponent<TextMeshProUGUI>().text = $"{Math.Floor(total/60)}:{Math.Round(total % 60 ,2 ,  MidpointRounding.AwayFromZero).ToString("00.00")}";
+
             //タイムで区切ってスコア評価をつける、動的にゆっくりの画像差し替え、テキストの変更。
-            // 暫定基準値Normal S:1:30  A:2:30  B:4:00    hard S:2:00  A:3:00   B:5:00  
+            // 暫定基準値Normal S:1:30  A:2:30  B:3:30    hard S:2:30  A:4:00   B:5:30    GMTime  N-1:02.30  H-2:15.70
             if(StaticVar.type == "N"){
                 // Normal時
                 if(total < 90){
@@ -545,7 +546,7 @@ public class TileEventHandler : MonoBehaviour
                     GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = A;
                     GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = AYukkuri;
                     GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = AText;
-                }else if(total < 240){
+                }else if(total < 210){
                     GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = B;
                     GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = BYukkuri;
                     GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = BText;
@@ -556,15 +557,15 @@ public class TileEventHandler : MonoBehaviour
                 }
             }else{
                 // Hard時
-                if(total < 120){
+                if(total < 150){
                     GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = S;
                     GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = SYukkuri;
                     GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = SText;
-                }else if(total < 180){
+                }else if(total < 240){
                     GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = A;
                     GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = AYukkuri;
                     GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = AText;
-                }else if(total < 300){
+                }else if(total < 330){
                     GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = B;
                     GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = BYukkuri;
                     GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = BText;
