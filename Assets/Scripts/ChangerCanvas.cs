@@ -16,6 +16,8 @@ public class ChangerCanvas : MonoBehaviour
     string TargetScene;
     double delay;
 
+    bool flag;
+
     int CCMode = 0;
     public int stageCount = 1;
 
@@ -24,6 +26,7 @@ public class ChangerCanvas : MonoBehaviour
         TargetPos = DefaultPos;
         delay = 3;
         Debug.Log("Start");
+        flag = true;
     }
 
     private void Update() {
@@ -31,13 +34,17 @@ public class ChangerCanvas : MonoBehaviour
             if(transform.position == ChangePos){
                 //n秒遅延させる処理
                 delay = delay - 1* Time.deltaTime;
-                if(delay > 0){
-                    // Debug.Log(delay);
-                    return;
+                if(flag == true){
+                    SceneManager.LoadScene(TargetScene,LoadSceneMode.Single);
+                    flag = false;
                 }
+                if(delay > 0)
+                    return;
+                    
                 TargetPos = DefaultPos;
-                SceneManager.LoadScene(TargetScene,LoadSceneMode.Single);
+                // SceneManager.LoadScene(TargetScene,LoadSceneMode.Single);
             }
+            flag = true;
             delay = 1;
         }else{
             if(TargetPos == DefaultPos && transform.position != DefaultPos){

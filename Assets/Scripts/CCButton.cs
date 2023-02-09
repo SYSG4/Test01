@@ -18,5 +18,6 @@ public class CCButton : MonoBehaviour
             CC.SceneChange(SceneName[2],SceneName[1]);
         else
             CC.SceneChange("Exit","Mainmenu");
+            StaticVar.gameMode = 0;
     }
 }
