@@ -1568,8 +1568,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00016069, y: 0.000057936}
-  m_SizeDelta: {x: 647.84, y: 182.94}
+  m_AnchoredPosition: {x: 0.00003849, y: 0.00001502}
+  m_SizeDelta: {x: 646, y: 176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1270525065
 MonoBehaviour:
@@ -1593,7 +1593,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: f20ffbbdaf7293d4cab86ee6b35b67b0, type: 3}
-    m_FontSize: 45
+    m_FontSize: 43
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1604,7 +1604,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.1
-  m_Text: "\uFF11\uFF10\u554F\u306E\u554F\u984C\u3092\u3067\u304D\u308B\u3060\u3051\u65E9\u304F\u89E3\u304D\u307E\u3059\u3002\u5408\u8A08\u30BF\u30A4\u30E0\u306B\u5FDC\u3058\u3066\u30E9\u30F3\u30AF\u304C\u51FA\u307E\u3059\u3002\u3000\u3000\u3000\u3000\u3000\u3000"
+  m_Text: "\uFF11\uFF10\u554F\u306E\u554F\u984C\u3092\u3067\u304D\u308B\u3060\u3051\u65E9\u304F\n\u89E3\u304D\u307E\u3059\u3002\u5408\u8A08\u30BF\u30A4\u30E0\u306B\u5FDC\u3058\u3066\n\u30E9\u30F3\u30AF\u304C\u51FA\u307E\u3059\u3002\u3000\u3000\u3000\u3000\u3000\u3000"
 --- !u!222 &1270525066
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2347,8 +2347,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00012159, y: 0.0000038188}
-  m_SizeDelta: {x: 647.84, y: 177}
+  m_AnchoredPosition: {x: 0.000059009, y: 0}
+  m_SizeDelta: {x: 646, y: 176}
   m_Pivot: {x: 0.50000006, y: 0.5}
 --- !u!114 &1805159076
 MonoBehaviour:
@@ -2372,7 +2372,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: f20ffbbdaf7293d4cab86ee6b35b67b0, type: 3}
-    m_FontSize: 45
+    m_FontSize: 43
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -2383,7 +2383,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.1
-  m_Text: "\u30D4\u30FC\u30B9\uFF13\u3064\u306E\u30CE\u30FC\u30DE\u30EB\u30E2\u30FC\u30C9\u3068\u30D4\u30FC\u30B9\uFF14\u3064\u306E\u30CF\u30FC\u30C9\u30E2\u30FC\u30C9\u3001\u305D\u308C\u305E\u308C\uFF13\uFF10\u554F\u81EA\u7531\u306B\u904A\u3079\u307E\u3059\u3002\n"
+  m_Text: "\u30D4\u30FC\u30B9\uFF13\u3064\u306E\u30CE\u30FC\u30DE\u30EB\u30E2\u30FC\u30C9\u3068\n\u30D4\u30FC\u30B9\uFF14\u3064\u306E\u30CF\u30FC\u30C9\u30E2\u30FC\u30C9\u3001\u305D\n\u308C\u305E\u308C\uFF13\uFF10\u554F\u81EA\u7531\u306B\u904A\u3079\u307E\u3059\u3002\n"
 --- !u!222 &1805159077
 CanvasRenderer:
   m_ObjectHideFlags: 0
