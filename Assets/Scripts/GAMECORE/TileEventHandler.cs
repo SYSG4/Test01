@@ -448,27 +448,14 @@ public class TileEventHandler : MonoBehaviour
             Timer.text = ($"{Math.Floor(time/60)}:{Math.Round(time % 60 ,2 ,  MidpointRounding.AwayFromZero).ToString("00.00")}");
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // time = 0;
-            // stop = false;
-            // stage += 1;
-            // if (stage == 31)
-            // {
-            //     type = 1 - type;
-            // }
-            // stage = stage % 31;
-            // if (type == 0)
-            //     Stagetext.text = $"N-{stage}";
-            // else
-            //     Stagetext.text = $"H-{stage}";
-
-            CC.clearTime[CC.stageCount - 1] = time;
-            StaticVar.stage = CC.stages[CC.stageCount];
-            Debug.Log($"index:{CC.stageCount} Stage:{CC.stages[CC.stageCount]}");
-            CC.stageCount += 1;
-            CC.SceneChange($"Next {CC.stageCount}","Play");
-        }
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     CC.clearTime[CC.stageCount - 1] = time;
+        //     StaticVar.stage = CC.stages[CC.stageCount];
+        //     Debug.Log($"index:{CC.stageCount} Stage:{CC.stages[CC.stageCount]}");
+        //     CC.stageCount += 1;
+        //     CC.SceneChange($"Next {CC.stageCount}","Play");
+        // }
 
         if(StaticVar.gameMode == 1 && delay > 0)
             delay -= 1*Time.deltaTime;
@@ -535,7 +522,7 @@ public class TileEventHandler : MonoBehaviour
             GameObject.Find($"TimeTextTotal").GetComponent<TextMeshProUGUI>().text = $"{Math.Floor(total/60)}:{Math.Round(total % 60 ,2 ,  MidpointRounding.AwayFromZero).ToString("00.00")}";
 
             //タイムで区切ってスコア評価をつける、動的にゆっくりの画像差し替え、テキストの変更。
-            // 暫定基準値Normal S:1:30  A:2:30  B:3:30    hard S:2:30  A:4:00   B:5:30    GMTime  N-1:02.30  H-2:15.70
+            // 暫定基準値Normal S:1:30  A:2:30  B:3:30    hard S:2:30  A:4:00   B:5:30    GMTime  N-50.70  H-1:55.68
             if(StaticVar.type == "N"){
                 // Normal時
                 if(total < 90){
