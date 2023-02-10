@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using System;
+using System.Threading.Tasks;
 
 public class CCButton : MonoBehaviour
 {
@@ -18,6 +15,9 @@ public class CCButton : MonoBehaviour
             CC.SceneChange(SceneName[2],SceneName[1]);
         else
             CC.SceneChange("Exit","Mainmenu");
-            StaticVar.gameMode = 0;
+            Task.Run(async delegate{
+                await Task.Delay(1000);
+                StaticVar.gameMode = 0;
+            });
     }
 }

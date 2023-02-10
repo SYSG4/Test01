@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using System.Linq;
 using System;
 
 public class ChangerCanvas : MonoBehaviour
@@ -53,9 +51,14 @@ public class ChangerCanvas : MonoBehaviour
             }
                 //n秒待たせる処理
             if(transform.position == ChangePos)
-                if(delay > 1){
-                    return;
+                if(flag == true){
+                    BTNHard.SetActive(true);
+                    BTNNormal.SetActive(true);
+                    flag = false;
                 }
+
+                if(delay > 1)
+                    return;
             }
         transform.position = Vector3.MoveTowards(transform.position,TargetPos,300*Time.deltaTime);
     }
@@ -70,8 +73,11 @@ public class ChangerCanvas : MonoBehaviour
     public void SceneChangeTA(){
         CCMode = 1;
         stageCount = 1;
-        BTNHard.SetActive(true);
-        BTNNormal.SetActive(true);
+        // Parallel.Invoke(
+        //     () => Thread.Sleep(1000),
+        //     () => BTNHard.SetActive(true),
+        //     () => BTNNormal.SetActive(true)
+        // );
         StaticVar.gameMode = 1;
         TargetPos = ChangePos;
         TextBox.text = "Time Attack";
