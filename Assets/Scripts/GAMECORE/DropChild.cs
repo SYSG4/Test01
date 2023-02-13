@@ -33,8 +33,8 @@ public class DropChild : MonoBehaviour
 
         for(int i=0; i < tilepos.GetLength(0);i++){
             for(int j=0; j < tilepos.GetLength(1);j++){
-                flagx = (int)((tilepos[i,j].x - nx) / (1.4 * 15));
-                flagy = (int)((tilepos[i,j].y - ny) / (1.4 * 15));
+                flagx = (int)((tilepos[i,j].x - nx) / (1.45 * 15));
+                flagy = (int)((tilepos[i,j].y - ny) / (1.45 * 15));
 
                 if(flagx == 0 && flagy == 0 && GameObject.Find($"Tile{i}{j}").tag == "Use"){
                     ti = i;
