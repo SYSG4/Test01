@@ -840,7 +840,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 432744489}
-        m_TargetAssemblyTypeName: MainBack, Assembly-CSharp
+        m_TargetAssemblyTypeName: CCButton, Assembly-CSharp
         m_MethodName: SwitchScene
         m_Mode: 1
         m_Arguments:
@@ -1800,7 +1800,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1812230278}
-        m_TargetAssemblyTypeName: MainBack, Assembly-CSharp
+        m_TargetAssemblyTypeName: CCButton, Assembly-CSharp
         m_MethodName: SwitchScene
         m_Mode: 1
         m_Arguments:

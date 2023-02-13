@@ -138,6 +138,3 @@ public class DropParent : MonoBehaviour
         }
     }
 }
-// 現状ピース全体が有効な(黒くなってない)盤面上にないとドロップ時に盤面に吸着しない。
-
-// GameObject.Find($"").GetComponent<Renderer>().material.color = Color.white; コピー用

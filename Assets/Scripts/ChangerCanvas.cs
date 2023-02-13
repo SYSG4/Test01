@@ -73,21 +73,10 @@ public class ChangerCanvas : MonoBehaviour
     public void SceneChangeTA(){
         CCMode = 1;
         stageCount = 1;
-        // Parallel.Invoke(
-        //     () => Thread.Sleep(1000),
-        //     () => BTNHard.SetActive(true),
-        //     () => BTNNormal.SetActive(true)
-        // );
         StaticVar.gameMode = 1;
         TargetPos = ChangePos;
         TextBox.text = "Time Attack";
-
-        // for(int i = 0;i < stages.GetLength(0); i ++)
-        //     Debug.Log($"stages:{stages[i]}++++++++++++++++");
-            stages = new int[10];
-        // stages = Enumerable.Repeat(0, 10).ToArray();
-        // for(int i = 0;i < stages.GetLength(0); i ++)
-        //     Debug.Log($"stages:{stages[i]}------------");
+        stages = new int[10];
 
         List<int> numbers = new List<int>();
         for (int i = 1; i <= 30; i++) {
@@ -101,9 +90,6 @@ public class ChangerCanvas : MonoBehaviour
             numbers.RemoveAt(index);
             j++;
         }
-        // Debug.Log($"====================================================================前後配列に不具合あり");
-        // for(int i = 0;i < 10; i ++)
-        //     // Debug.Log($"stages:{stages[i]}========{i}");
     }
 
     public void ModeButtonN(){

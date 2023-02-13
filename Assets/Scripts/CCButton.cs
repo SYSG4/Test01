@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Threading.Tasks;
 
 public class CCButton : MonoBehaviour
@@ -15,9 +16,19 @@ public class CCButton : MonoBehaviour
             CC.SceneChange(SceneName[2],SceneName[1]);
         else
             CC.SceneChange("Exit","Mainmenu");
-            Task.Run(async delegate{
-                await Task.Delay(1000);
-                StaticVar.gameMode = 0;
-            });
+            StartCoroutine(DelayGM());
+            // Task.Run(async delegate{
+            //     await Task.Delay(1000);
+            //     StaticVar.gameMode = 0;
+            // });
+    }
+
+    IEnumerator DelayGM(){
+        float delay = 1;
+        while(delay > 0){
+            delay -= 1 * Time.deltaTime;
+            yield return null;
+        }
+        StaticVar.gameMode = 0;
     }
 }
