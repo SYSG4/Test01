@@ -403,11 +403,10 @@ public class TileEventHandler : MonoBehaviour
         }
     };
 
-    [SerializeField] TextMeshProUGUI Stagetext;
-    [SerializeField] TextMeshProUGUI Timer;
-    [SerializeField] GameObject UIMObj;
+    [SerializeField] TextMeshProUGUI Stagetext,Timer;
+    [SerializeField] GameObject UIMObj,RankTextIMG;
 
-    [SerializeField] Sprite S,A,B,C,SYukkuri,AYukkuri,BYukkuri,CYukkuri,SText,AText,BText,CText;
+    [SerializeField] Sprite SS,S,A,B,C,SSYukkuriN,SSYukkuriH,SYukkuri,AYukkuri,BYukkuri,CYukkuri,SSTextN,SSTextH,SText,AText,BText,CText;
 
     GameObject[] Pieces;
     ChangerCanvas CC;
@@ -448,14 +447,14 @@ public class TileEventHandler : MonoBehaviour
             Timer.text = ($"{Math.Floor(time/60)}:{Math.Round(time % 60 ,2 ,  MidpointRounding.AwayFromZero).ToString("00.00")}");
         }
 
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
-        //     CC.clearTime[CC.stageCount - 1] = time;
-        //     StaticVar.stage = CC.stages[CC.stageCount];
-        //     Debug.Log($"index:{CC.stageCount} Stage:{CC.stages[CC.stageCount]}");
-        //     CC.stageCount += 1;
-        //     CC.SceneChange($"Next {CC.stageCount}","Play");
-        // }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CC.clearTime[CC.stageCount - 1] = time;
+            StaticVar.stage = CC.stages[CC.stageCount];
+            Debug.Log($"index:{CC.stageCount} Stage:{CC.stages[CC.stageCount]}");
+            CC.stageCount += 1;
+            CC.SceneChange($"Next {CC.stageCount}","Play");
+        }
 
         if(StaticVar.gameMode == 1 && delay > 0)
             delay -= 1*Time.deltaTime;
@@ -525,7 +524,14 @@ public class TileEventHandler : MonoBehaviour
             // 暫定基準値Normal S:1:30  A:2:30  B:3:30    hard S:2:30  A:4:00   B:5:30    GMTime  N-50.70  H-1:55.68
             if(StaticVar.type == "N"){
                 // Normal時
-                if(total < 90){
+                RankTextIMG.GetComponent<SpriteRenderer>().color = new Color32(0,50,255,255);
+                for(int i = 1; i <= 11; i++)
+                    GameObject.Find($"Number ({i})").GetComponent<TextMeshProUGUI>().color = new Color32(0,50,241,255);
+                if(total < 50){
+                    GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = SS;
+                    GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = SSYukkuriN;
+                    GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = SSTextN;
+                }else if(total < 90){
                     GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = S;
                     GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = SYukkuri;
                     GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = SText;
@@ -544,7 +550,14 @@ public class TileEventHandler : MonoBehaviour
                 }
             }else{
                 // Hard時
-                if(total < 150){
+                RankTextIMG.GetComponent<SpriteRenderer>().color = new Color32(255,0,0,255);
+                for(int i = 1; i <= 11; i++)
+                    GameObject.Find($"Number ({i})").GetComponent<TextMeshProUGUI>().color = new Color32(241,54,0,255);
+                if(total < 73){
+                    GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = SS;
+                    GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = SSYukkuriH;
+                    GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = SSTextH;
+                }else if(total < 150){
                     GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = S;
                     GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = SYukkuri;
                     GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = SText;

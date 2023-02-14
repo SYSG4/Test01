@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorials/page5.unity
     guid: 580f216308ea9bf4e85388c4f5712341
+  - enabled: 1
+    path: Assets/Scenes/SecretScene.unity
+    guid: b17549c563216944c80530b4b42bf8f4
   m_configObjects: {}

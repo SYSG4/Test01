@@ -3631,7 +3631,7 @@ GameObject:
   - component: {fileID: 390307698}
   - component: {fileID: 390307697}
   m_Layer: 5
-  m_Name: NumberTotal
+  m_Name: Number (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5072,8 +5072,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278204145
-  m_fontColor: {r: 0.94509804, g: 0.21176471, b: 0, a: 1}
+    rgba: 4293997056
+  m_fontColor: {r: 0, g: 0.19595416, b: 0.94509804, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9343,7 +9343,7 @@ SpriteRenderer:
   m_SortingLayerID: 1338708041
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5c9cd35cbc6ed364980869aad65ef7f5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92079bd27f9032e4c95a4f5152e7827f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -16654,8 +16654,8 @@ SpriteRenderer:
   m_SortingLayerID: 1338708041
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 793f749fd9bad344e83869a4e6155ff3, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 41760ae6bddb80d44a15ff8e3c958061, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -17702,14 +17702,20 @@ MonoBehaviour:
   Stagetext: {fileID: 618820135}
   Timer: {fileID: 1067442509}
   UIMObj: {fileID: 1365259111}
+  RankTextIMG: {fileID: 1621553022}
+  SS: {fileID: 21300000, guid: dab642479eea1c149aff0d82cee6b464, type: 3}
   S: {fileID: 21300000, guid: 9dddc6855c7828b4fb5f3a3852f3e1e9, type: 3}
   A: {fileID: 21300000, guid: 30ab6d5d445619b4895c2e872039ab0e, type: 3}
   B: {fileID: 21300000, guid: 779cb8c4e72863542bbf55b543f55c97, type: 3}
   C: {fileID: 21300000, guid: fb50348c57fb44541a2df4cbc43a3c3f, type: 3}
+  SSYukkuriN: {fileID: 21300000, guid: a067c1529477c714fb1559b0fe6ebe1f, type: 3}
+  SSYukkuriH: {fileID: 21300000, guid: 92079bd27f9032e4c95a4f5152e7827f, type: 3}
   SYukkuri: {fileID: 21300000, guid: 299ebd183af1b8a46ba99a92e2aecb9e, type: 3}
   AYukkuri: {fileID: 21300000, guid: 5c9cd35cbc6ed364980869aad65ef7f5, type: 3}
   BYukkuri: {fileID: 21300000, guid: 56b941e1436196245a23e7b47253587f, type: 3}
   CYukkuri: {fileID: 21300000, guid: cb0a7fac3e6e30e459ef93e58650d375, type: 3}
+  SSTextN: {fileID: 21300000, guid: 04b2de3a3ac875840a8d8f432c1de74e, type: 3}
+  SSTextH: {fileID: 21300000, guid: 5e640fdc023dbc9408609e1fba7c337f, type: 3}
   SText: {fileID: 21300000, guid: 51c08487fa70aa44fbbb387570645105, type: 3}
   AText: {fileID: 21300000, guid: 7b94847059879d5418a4f04e58f21804, type: 3}
   BText: {fileID: 21300000, guid: 694a6db3ee5250443878b9e1080d5b81, type: 3}
