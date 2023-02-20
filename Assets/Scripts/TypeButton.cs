@@ -23,7 +23,7 @@ public class TypeButton : MonoBehaviour
     public void Onclick(){
         StaticVar.type = name.Substring(0,1);
         SceneManager.LoadScene (SceneManager.GetActiveScene().name);
-        Debug.Log($"Static:type  Set string:{name.Substring(0,1)}");
+        // Debug.Log($"Static:type  Set string:{name.Substring(0,1)}");
 
     }
 }

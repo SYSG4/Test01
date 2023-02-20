@@ -23,7 +23,7 @@ public class ChangerCanvas : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         TargetPos = DefaultPos;
         delay = 3;
-        Debug.Log("Start");
+        // Debug.Log("Start");
         flag = true;
     }
 
@@ -86,7 +86,7 @@ public class ChangerCanvas : MonoBehaviour
         while (j < 10) {
             int index = UnityEngine.Random.Range(0, numbers.Count);
             stages[j] = numbers[index];
-            Debug.Log($"stage{j}:{stages[j]} = {numbers[index]}");
+            // Debug.Log($"stage{j}:{stages[j]} = {numbers[index]}");
             numbers.RemoveAt(index);
             j++;
         }

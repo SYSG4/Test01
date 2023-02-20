@@ -419,14 +419,14 @@ public class TileEventHandler : MonoBehaviour
         if(StaticVar.gameMode == 0){
             stop = true;
             Timer.text = "FreePlay";
-            Debug.Log("Set Timer Text");
+            // Debug.Log("Set Timer Text");
         }else
             StaticVar.stage = CC.stages[CC.stageCount -1];
 
         if(CC.stageCount == 1)
             delay = 3;
         else
-            delay = 1;
+            delay = 2;
         time = 0;
         Pieces = GameObject.FindGameObjectsWithTag("Piece");
         stage = StaticVar.stage;
@@ -438,7 +438,7 @@ public class TileEventHandler : MonoBehaviour
             Stagetext.text = $"H-{stage}";
         }
         TileUpdate();
-        Debug.Log($"Type:{type} Stage:{stage}");
+        // Debug.Log($"Type:{type} Stage:{stage}");
     }
     private void Update()
     {
@@ -447,14 +447,14 @@ public class TileEventHandler : MonoBehaviour
             Timer.text = ($"{Math.Floor(time/60)}:{Math.Round(time % 60 ,2 ,  MidpointRounding.AwayFromZero).ToString("00.00")}");
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CC.clearTime[CC.stageCount - 1] = time;
-            StaticVar.stage = CC.stages[CC.stageCount];
-            Debug.Log($"index:{CC.stageCount} Stage:{CC.stages[CC.stageCount]}");
-            CC.stageCount += 1;
-            CC.SceneChange($"Next {CC.stageCount}","Play");
-        }
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     CC.clearTime[CC.stageCount - 1] = time;
+        //     StaticVar.stage = CC.stages[CC.stageCount];
+        //     Debug.Log($"index:{CC.stageCount} Stage:{CC.stages[CC.stageCount]}");
+        //     CC.stageCount += 1;
+        //     CC.SceneChange($"Next {CC.stageCount}","Play");
+        // }
 
         if(StaticVar.gameMode == 1 && delay > 0)
             delay -= 1*Time.deltaTime;
@@ -521,7 +521,7 @@ public class TileEventHandler : MonoBehaviour
             GameObject.Find($"TimeTextTotal").GetComponent<TextMeshProUGUI>().text = $"{Math.Floor(total/60)}:{Math.Round(total % 60 ,2 ,  MidpointRounding.AwayFromZero).ToString("00.00")}";
 
             //タイムで区切ってスコア評価をつける、動的にゆっくりの画像差し替え、テキストの変更。
-            // 暫定基準値Normal S:1:30  A:2:30  B:3:30    hard S:2:30  A:4:00   B:5:30    GMTime  N-50.70  H-1:55.68
+            // 暫定基準値Normal S:1:20  A:2:30  B:3:30    hard S:2:20  A:4:00   B:5:30    GMTime  N-50.70  H-1:55.68
             if(StaticVar.type == "N"){
                 // Normal時
                 RankTextIMG.GetComponent<SpriteRenderer>().color = new Color32(0,50,255,255);
@@ -531,7 +531,7 @@ public class TileEventHandler : MonoBehaviour
                     GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = SS;
                     GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = SSYukkuriN;
                     GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = SSTextN;
-                }else if(total < 90){
+                }else if(total < 80){
                     GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = S;
                     GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = SYukkuri;
                     GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = SText;
@@ -553,11 +553,11 @@ public class TileEventHandler : MonoBehaviour
                 RankTextIMG.GetComponent<SpriteRenderer>().color = new Color32(255,0,0,255);
                 for(int i = 1; i <= 11; i++)
                     GameObject.Find($"Number ({i})").GetComponent<TextMeshProUGUI>().color = new Color32(241,54,0,255);
-                if(total < 73){
+                if(total < 55){
                     GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = SS;
                     GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = SSYukkuriH;
                     GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = SSTextH;
-                }else if(total < 150){
+                }else if(total < 140){
                     GameObject.Find("Rank").GetComponent<SpriteRenderer>().sprite = S;
                     GameObject.Find("表情差分").GetComponent<SpriteRenderer>().sprite = SYukkuri;
                     GameObject.Find("ResultText").GetComponent<SpriteRenderer>().sprite = SText;

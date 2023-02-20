@@ -37,7 +37,7 @@ public class StageSelect : MonoBehaviour
         else
             stage = "Hard";
         StaticVar.stage = int.Parse(child.GetComponent<Text>().text);
-        Debug.Log($"Static:stage  Set string:{StaticVar.stage}");
+        // Debug.Log($"Static:stage  Set string:{StaticVar.stage}");
         CC.SceneChange($"{stage}Mode Stage{StaticVar.stage}","Play");
 
         // 以下遊び
